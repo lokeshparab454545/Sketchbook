@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import styles from "./index.module.css";
 import { COLORS } from "@/constant";
 const Toolbox = () => {
+  const activeMenuItem = useSelector((state) => state.menu.activeMenuItem);
   const updateBrushSize = () => {};
   return (
     <div className={styles.toolboxContainer}>
