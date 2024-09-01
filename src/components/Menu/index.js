@@ -10,7 +10,7 @@ import cx from "classnames";
 import styles from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { MENU_ITEMS } from "@/constant";
-import { menuItemClick } from "@/slice/menuSlice";
+import { actionItemClick, menuItemClick } from "@/slice/menuSlice";
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -18,6 +18,10 @@ const Menu = () => {
 
   const handleMenuClick = (itemName) => {
     dispatch(menuItemClick(itemName));
+  };
+
+  const handleActionItemClick = (itemName) => {
+    dispatch(actionItemClick(itemName));
   };
 
   return (
@@ -39,13 +43,22 @@ const Menu = () => {
       >
         <FontAwesomeIcon icon={faEraser} className={styles.icon} />
       </div>
-      <div className={styles.iconWrapper}>
+      <div
+        className={styles.iconWrapper}
+        onClick={() => handleActionItemClick(MENU_ITEMS.UNDO)}
+      >
         <FontAwesomeIcon icon={faRotateLeft} className={styles.icon} />
       </div>
-      <div className={styles.iconWrapper}>
+      <div
+        className={styles.iconWrapper}
+        onClick={() => handleActionItemClick(MENU_ITEMS.REDO)}
+      >
         <FontAwesomeIcon icon={faRotateRight} className={styles.icon} />
       </div>
-      <div className={styles.iconWrapper}>
+      <div
+        className={styles.iconWrapper}
+        onClick={() => handleActionItemClick(MENU_ITEMS.DOWNLOAD)}
+      >
         <FontAwesomeIcon icon={faFileArrowDown} className={styles.icon} />
       </div>
     </div>
